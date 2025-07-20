@@ -21,12 +21,4 @@ A simple and clean **Instagram login page clone** built using **HTML** and **CSS
 - JavaScript
 
 
-## 📂 Folder Structure
-├── login/
-│   ├── login.html
-│   ├── login.css
-│   ├── login.js
-│   └── assets/
-│       └── images
-  
 
